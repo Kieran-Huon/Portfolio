@@ -1,12 +1,13 @@
 import * as THREE from 'three';
-import { mergeVertices } from 'three/examples/jsm/utils/BufferGeometryUtils.js';
+// import { mergeVertices } from 'three/examples/jsm/utils/BufferGeometryUtils.js';
+import * as BufferGeometryUtils from 'three/examples/jsm/utils/BufferGeometryUtils.js';
 import { Colors } from './colors.js';
 
 export class Sea {
   constructor() {
     const baseGeom = new THREE.CylinderGeometry(600, 600, 800, 40, 10);
     baseGeom.rotateX(-Math.PI / 2);
-    const geom = mergeVertices(baseGeom);
+    const geom = BufferGeometryUtils.mergeVertices(baseGeom);
 
     const position = geom.attributes.position;
     this.waves = [];
