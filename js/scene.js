@@ -1,5 +1,8 @@
 import * as THREE from 'three';
 import { Stars } from './stars.js';
+import { Laptop } from './laptop.js';
+
+
 
 export let scene, camera, renderer;
 export let stars;
@@ -39,6 +42,9 @@ export function createScene() {
   // 🌟 Ajout des étoiles après création de la scène
   stars = new Stars();
   stars.addToScene(scene);
+
+  // const laptop = new Laptop();
+  // laptop.addToScene(scene);
 
   window.addEventListener('resize', () => {
     const HEIGHT = window.innerHeight;

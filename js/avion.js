@@ -4,6 +4,8 @@ import { createLights } from './lights.js';
 import { Sea } from './sea.js';
 import { Sky } from './sky.js';
 import { AirPlane } from './plane.js';
+import { Laptop } from './laptop.js';
+
 
 
 let sea, sky, airplane;
@@ -143,19 +145,43 @@ function createSky() {
   scene.add(sky.mesh);
 }
 
+// function createSectionObjects() {
+//   sections.forEach(section => {
+//     const geometry = new THREE.IcosahedronGeometry(30, 1);
+//     const material = new THREE.MeshStandardMaterial({
+//       color: section.color,
+//       flatShading: true
+//     });
+//     const mesh = new THREE.Mesh(geometry, material);
+//     mesh.visible = false;
+//     scene.add(mesh);
+//     sectionObjects.push(mesh);
+//   });
+// }
 function createSectionObjects() {
-  sections.forEach(section => {
-    const geometry = new THREE.IcosahedronGeometry(30, 1);
-    const material = new THREE.MeshStandardMaterial({
-      color: section.color,
-      flatShading: true
-    });
-    const mesh = new THREE.Mesh(geometry, material);
+  sections.forEach((section, index) => {
+    let mesh;
+
+    if (index === 2) {
+      // 💻 Pour "Projets" → remplacer par l'ordinateur
+      const laptop = new Laptop();
+      mesh = laptop.mesh;
+      mesh.scale.set(10, 10, 10); // Ajuste l’échelle si besoin
+    } else {
+      const geometry = new THREE.IcosahedronGeometry(30, 1);
+      const material = new THREE.MeshStandardMaterial({
+        color: section.color,
+        flatShading: true
+      });
+      mesh = new THREE.Mesh(geometry, material);
+    }
+
     mesh.visible = false;
     scene.add(mesh);
     sectionObjects.push(mesh);
   });
 }
+
 
 
 function onClickObject(event) {
